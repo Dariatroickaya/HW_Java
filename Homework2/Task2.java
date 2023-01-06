@@ -18,20 +18,17 @@ public class Task2 {
         }
         System.out.println(Arrays.toString(array));
 
+        Sorting(array, size);
+        System.out.println(Arrays.toString(array));
+    }
+
+    public static void Sorting(int[] array, int size) throws IOException {
         Logger logger = Logger.getLogger(Task2.class.getName());
         logger.setLevel(Level.INFO);
         FileHandler fh = new FileHandler("log.log");
         fh.setFormatter(new SimpleFormatter());
         logger.addHandler(fh);
         logger.log(Level.INFO, Arrays.toString(array));
-
-        Sorting(array, size);
-        System.out.println(Arrays.toString(array));
-
-        logger.log(Level.INFO, Arrays.toString(array));
-    }
-
-    public static void Sorting(int[] array, int size) {
         for (int i = 0; i < size; i++) {
             for (int j = i; j < size; j++) {
                 if (array[i] > array[j]) {
@@ -39,6 +36,7 @@ public class Task2 {
                     array[j] = array[i];
                     array[i] = temp;
                 }
+                logger.log(Level.INFO, Arrays.toString(array));
             }
         }
     }
